@@ -21,7 +21,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout branch
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - uses: actions/setup-node@v1 #this installs node and npm for us
         with:
           node-version: '12.x'
@@ -33,7 +33,7 @@ jobs:
           npm run runDeploy
           
       - name: Deploy file to github pages
-      - uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages  
