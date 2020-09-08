@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+    <div class="login-card">
+        <b>Login Page</b>
+        <input type="text" [(ngModel)]="email" />
+        <input type="text" [(ngModel)]="password" />
+
+        <div class="button-section">
+            <button type="button" id="submit" #login>Submit</button>
+        </div>
+    </div>
+
+    <div class="signOut">
+        <button (click)="signOut()">Sign Out</button>
+    </div>
+
+    <div class="signUp">
+        <button (click)="signUp()">Sign Up</button>
+    </div>
+
+    <div class="verificationMail">
+        <button (click)="verificationMail()">Verify</button>
+    </div>
+</div>
