@@ -92,7 +92,7 @@ export class AuthenticationService{
      async uploadProfilePic(eve){
        let  user = await this.getUserObject();
        let uid =  (user).uid;
-       let path =  'profiles/'+uid;
+       let path =  'profiles/'+uid +'/profile.jpg';
        const ref = this.storage.ref(path);
        this.storage.upload(path,eve).snapshotChanges().pipe(
            finalize(()=>{
