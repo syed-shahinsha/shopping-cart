@@ -31,6 +31,7 @@ export class AuthenticationService{
         return (user !== null && user.emailVerified !== false) ? true : false;
     }
 
+
     isVerfiedJSON(){
         const user = JSON.parse(localStorage.getItem('user'));
         if(user !== null){
@@ -44,6 +45,7 @@ export class AuthenticationService{
        try{
         let response =  await this.fireAuth.signInWithEmailAndPassword(email,password);
         console.log(response);
+        localStorage.setItem('user',JSON.stringify(response.user))
         if(this.isLoggedIn()){
             this.routeToLandingPage();
         }else{
@@ -58,6 +60,8 @@ export class AuthenticationService{
         try{
          let response =  await this.fireAuth.createUserWithEmailAndPassword(email,password);
          console.log(response);
+         localStorage.setItem('user',JSON.stringify(response.user))
+         return Promise.resolve(response);
         }catch(err){
          console.log(err);
          window.alert(err.message);
@@ -67,6 +71,7 @@ export class AuthenticationService{
      async verificationMail(){
          try{
             let response = await (await this.fireAuth.currentUser).sendEmailVerification();
+            return Promise.resolve(response);
          }catch(err){
             console.log(err);
 

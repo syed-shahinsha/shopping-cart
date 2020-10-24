@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanLoad, Route } from '@angular/router';
 import { AuthenticationService } from "../services/authentication.service";
-import { Observable } from 'rxjs';
+import { Observable, never } from 'rxjs';
 
 @Injectable()
 export class LoggedInAuthGuard implements CanActivate,CanLoad {
@@ -14,17 +14,31 @@ export class LoggedInAuthGuard implements CanActivate,CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.authService.isLoggedIn() !== true) {
+
+      let verify = this.authService.isVerfiedJSON();
+    if(verify.loggedIn) {
+    if(verify.verified){
+      return true;
+    }else{
+      this.router.navigate(['verifymail'])
+    }
+    }else{
       this.router.navigate(['login'])
     }
-    return true;
+    
   }
 
   canLoad(route:Route): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.authService.isLoggedIn() !== true) {
-        this.router.navigate(['login'])
-      }
+    let verify = this.authService.isVerfiedJSON();
+    if(verify.loggedIn) {
+    if(verify.verified){
       return true;
+    }else{
+      this.router.navigate(['verifymail'])
+    }
+    }else{
+      this.router.navigate(['login'])
+    }
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fromEvent } from 'rxjs'
 import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ export class LoginComponent implements AfterViewInit {
   email:string='';
   password:string='';
   @ViewChild('login') loginButton:ElementRef;
-  constructor(private authenticate:AuthenticationService) { }
+  constructor(private authenticate:AuthenticationService,private router:Router) { }
  
 
   ngAfterViewInit(): void {
@@ -28,14 +29,15 @@ export class LoginComponent implements AfterViewInit {
     this.email= this.password = '';
   }
 
+  signUp(){
+    this.router.navigate(['signUp'])
+  }
+
   verificationMail(){
     this.authenticate.verificationMail();
   }
 
-  signUp(){
-    this.authenticate.signUp(this.email,this.password);
-    this.emptyData();
-  }
+  
 
   signOut(){
     this.authenticate.signOut();
