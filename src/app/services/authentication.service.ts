@@ -46,9 +46,13 @@ export class AuthenticationService{
         let response =  await this.fireAuth.signInWithEmailAndPassword(email,password);
         console.log(response);
         localStorage.setItem('user',JSON.stringify(response.user))
-        if(this.isLoggedIn()){
+        let obj = this.isVerfiedJSON();
+        if(obj.loggedIn && obj.verified){
             this.routeToLandingPage();
-        }else{
+        }else if(obj.loggedIn && !obj.verified){
+            this.routeToVerifyPage();
+        }
+        else{
             console.log('Data check')
         }
        }catch(err){
@@ -121,7 +125,7 @@ export class AuthenticationService{
      }
 
      routeToVerifyPage(){
-         return this.router.navigate(['verifyemail'])
+         return this.router.navigate(['verifymail'])
      }
 
     routeToLandingPage(){
