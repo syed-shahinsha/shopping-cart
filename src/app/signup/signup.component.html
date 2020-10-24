@@ -1,0 +1,26 @@
+<div class="login-bg-wrapper">
+    <div class="login-image-wrapper"></div>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <b>Login Page</b>
+            <div class="input-label">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="email" placeholder="Enter Email" />
+            </div>
+            <div class="input-label">
+                <label>Password</label>
+            <input type="password" [(ngModel)]="password" placeholder="Enter Password" />
+            </div>
+            <div class="input-label">
+                <label>Reenter Password</label>
+            <input type="password" [(ngModel)]="repassword" placeholder="Re-Enter Password" />
+            </div>
+            <div class="button-section">
+                <button type="button" id="submit" #login>Sign Up</button>
+            </div>
+        </div>
+        <div class="login">
+            <p>Want to go back to Login <span (click)="loginPage()">Here it is!</span></p>
+        </div>
+    </div>
+</div>

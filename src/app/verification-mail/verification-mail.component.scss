@@ -1,0 +1,42 @@
+.verify-wrapper{
+   height:100%;
+   overflow:hidden;
+   .verify-section{
+        height:50%;
+        margin: 20px;
+        background:white;
+        padding:20px 8px 35px 20px;
+        display: flex;
+        flex-direction: column;
+
+        .signOut{
+            margin-left: auto;
+            button{
+                border: none;
+                background: #b40e09;
+                width: 75px;
+                height: 30px;
+                border-radius: 5px;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+        .verify-button{
+            width: 20%;
+            margin-top: auto;
+            margin-bottom: auto;
+
+            button{
+                border: none;
+                background: #f99d10;
+                width: 75px;
+                height: 30px;
+                border-radius: 5px;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+   }
+}
