@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "runDeploy": "ng build --prod --base-href=/shopping-cart/"
+    "runDeploy": "ng build --prod --base-href=/shopping-cart/",
+    "firebaseDeploy":"ng build --prod"
   },
   "private": true,
   "dependencies": {
