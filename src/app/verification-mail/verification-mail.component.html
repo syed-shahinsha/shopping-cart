@@ -1,0 +1,14 @@
+<div class="verify-wrapper">
+    <div class="verify-section">
+    <div class="signOut">
+       <button type="button" (click)="logOut()">Log Out</button>
+    </div>
+    <p>You are logged In successfully , but you need to verify your email, please click the confirm button, once you are done, reload the page to login</p>
+    <p>Don't Worry, It's an one time verification for new users</p>
+    <p>Your Email : {{formattedEmail}}</p>
+    <div class="verify-button">
+        <button type="button" (click)="verificationMail()">Confirm</button>
+    </div>
+    <p></p>
+</div>
+</div>

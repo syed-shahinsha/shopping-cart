@@ -3,7 +3,16 @@
 @import 'assets/fonts/font.scss';
 
 html,body{
+    height: 100%;
     min-height: 100%;
+    margin: 0;
+    padding: 0;
     background : #e6e0e0;
     font-family: 'PT Sans Narrow';
+}
+
+button {
+    &:focus{
+        outline:none;
+    }
 }
