@@ -1,4 +1,8 @@
 <app-header></app-header>
 <div class="landing">
-    <img src="assets/images/landingpage.jpg" width="100%" height="100%" />
+    <!-- <img src="assets/images/landingpage.jpg" width="100%" height="100%" /> -->
+    <div *ngFor = "let product of products | async" class="card">
+        {{product.Name}}
+        <div>{{product.Description}}</div>
+    </div>
 </div>
