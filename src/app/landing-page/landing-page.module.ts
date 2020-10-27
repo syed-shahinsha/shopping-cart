@@ -10,4 +10,5 @@ import { HeaderComponent } from '../header/header.component';
     declarations:[LandingPageComponent, HeaderComponent,],
     imports:[CommonModule,LandingPageRoutingModule]
 })
-export class LandingPageModule{}
+export class LandingPageModule{
+}
