@@ -1,4 +1,5 @@
 <app-header></app-header>
 <div class="landing">
     <img src="assets/images/landingpage.jpg" width="100%" height="100%" />
+    <div *ngFor = "let product of products | async">{{product | json}}</div>
 </div>
