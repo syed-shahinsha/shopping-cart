@@ -8,13 +8,15 @@
         <div class="row">
             <div *ngFor="let product of products | async" class="col-xs-1 col-sm-1 col-md-4 col-lg-4" >
                 <mat-card class="example-card mat-elevation-z8 ">
+                    <ng-container *ngIf="product?.finalImageUrl | async as image">
                     <img mat-card-image
-                        [src]="safehtml(product.imageURL) | async | safe:'url'" alt="">
+                        [src]="image" alt="" />
+                    </ng-container>
                     <mat-card-content>
-                        <h4>{{product.name}}</h4>
+                        <h4>{{product?.name}}</h4>
                         <div>
-                            <p>{{product.description}}</p>
-                            <h5>{{product.price}}</h5>
+                            <p>{{product?.description}}</p>
+                            <h5>{{product?.price}}</h5>
                         </div>
                     </mat-card-content>
                     <mat-card-actions>

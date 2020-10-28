@@ -27,7 +27,8 @@
               "firebase/app",
               "firebase/auth",
               "@firebase/auth",
-              "@firebase/storage"
+              "@firebase/storage",
+              "@angular/fire/firestore"
             ],
             "assets": [
               "src/favicon.ico",
