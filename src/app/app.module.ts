@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire'
-import { FormsModule} from '@angular/forms'
+import { FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card'
+
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import {AngularFireStorageModule} from '@angular/fire/storage'
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoggedInAuthGuard } from './guard/logged-in.guard';
@@ -23,6 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     FormsModule,
     BrowserModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
