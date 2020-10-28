@@ -17,9 +17,8 @@ export class LandingPageComponent implements OnInit {
     this.prodObs = afs.collection<any>('product');
     this.products = this.prodObs.valueChanges().pipe(
       switchMap( res =>{ 
-        return from(res).pipe( concatMap(async x => {
-          let finalImageUrl = await this.safehtml(x.imageURL);
-          return  { ...x,finalImageUrl}
+        return from(res).pipe( concatMap( x => {
+         return this.safehtml(x.imageURL).pipe( map( img => ({...x,finalImageUrl:img})))
         }),
         toArray())
       })
