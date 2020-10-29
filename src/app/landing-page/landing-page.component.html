@@ -1,17 +1,18 @@
 
 <!-- products -->
 <div class="landing">
-    <div class="">
-        <mat-form-field appearance="fill">
-            <mat-label>Filter by Category</mat-label>
-            <mat-select disableRipple>
-              <mat-option value="1">Cotton</mat-option>
-              <mat-option value="2">Silk</mat-option>
-              <mat-option value="3">Synthetic</mat-option>
-            </mat-select>
-          </mat-form-field>
-        <div class="row" >
-            <div *ngFor="let product of products | async" class="col-md-4" style="margin-top: 5px;" >
+        <div class="container">
+            <mat-form-field appearance="fill">
+                <mat-label>Filter by Category</mat-label>
+                <mat-select disableRipple>
+                  <mat-option value="1">Cotton</mat-option>
+                  <mat-option value="2">Silk</mat-option>
+                  <mat-option value="3">Synthetic</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="row m-3">
+            <div *ngFor="let product of products | async" class="col-md-3" style="margin-top: 5px;" >
                 <mat-card class="example-card mat-elevation-z8 ">
                     <ng-container *ngIf="product?.finalImageUrl as image">
                     <img mat-card-image
@@ -31,5 +32,5 @@
                 </mat-card>
             </div>
         </div>
-    </div>
+    
 </div>

@@ -2,18 +2,20 @@
 
 .landing{
     margin-top: 115px;
-    display: flex;
+    overflow-x: hidden;
     height: 100%;
-    .mat-card-content{
-        max-height: 100px;
+    .example-card {
+        max-width: 85%;
+        .mat-card-content{
+            max-height: 100px;
+        }
+        .card-width{
+            width: 25%;
+        }
     }
-    .card-width{
-        width: 25%;
-    }
+    
 }
-.example-card {
-    max-width: 200px;
-}
+
 
 .medium-bold{
     font-weight: bolder;
@@ -32,9 +34,12 @@
   
   @include media("screen","<minWidth"){
     .landing{
-        .card-width{
-            width: 100%;
-            padding: 0% 10% 10% 16%;
-        }
+        .example-card{
+            max-width: 90%;
+            .card-width{
+                width: 100%;
+                padding: 0% 10% 10% 16%;
+            }
+        }  
     }
 }
