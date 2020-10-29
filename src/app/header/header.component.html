@@ -1,8 +1,15 @@
 <div class="header">
-  <img height="40" alt="Logo for Website"/>
+  <div class="left">
+  <span>Welcome user</span>
+</div>
+  <img src="https://motamalhandlooms.com/wp-content/uploads/2017/03/India-Handloom-a.png" height="80px" alt="Logo for Website"/>
 
   <div class="right">
-      <span>Welcome, User</span>
-      <span (click)="logOut()">Log Out</span>
+      
+      <span (click)="logOut()"><mat-icon>add_shopping_cart</mat-icon>
+              <span>Logout</span></span>
   </div>
+</div>
+<div class="header-margin-top">
+  <router-outlet></router-outlet>
 </div>
