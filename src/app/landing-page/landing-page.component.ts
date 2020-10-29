@@ -20,17 +20,15 @@ export class LandingPageComponent implements OnInit {
         return from(res).pipe( concatMap( x => {
          return this.safehtml(x.imageURL).pipe( map( img => ({...x,finalImageUrl:img})))
         }),
-        toArray())
+        toArray());
       })
     );
     
    }
   
   safehtml(image){
-    //return this.san.bypassSecurityTrustResourceUrl(image);
-    return this.storage.ref(image).getDownloadURL()
+    return this.storage.ref(image).getDownloadURL();
   }
-
 
   ngOnInit(): void {
       this.products.subscribe(res =>{
