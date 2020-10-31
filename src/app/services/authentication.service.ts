@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 @Injectable({
@@ -11,7 +11,7 @@ import { finalize } from 'rxjs/operators';
 
 
 export class AuthenticationService {
-    userData: firebase.User;
+    userData: any;
     constructor(private fireAuth: AngularFireAuth, private zone: NgZone, private router: Router, private storage: AngularFireStorage) {
         this.fireAuth.authState.subscribe((res) => {
             if (res) {
@@ -23,7 +23,7 @@ export class AuthenticationService {
         })
     }
 
-    sendUserData(): firebase.User {
+    sendUserData() {
         return this.userData;
     }
     isLoggedIn() {
