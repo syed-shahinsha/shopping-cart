@@ -23,14 +23,22 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "allowedCommonJsDependencies": ["firebase/app","firebase/auth" , "@firebase/auth" , "@firebase/storage"],
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "firebase/auth",
+              "@firebase/auth",
+              "@firebase/storage",
+              "@angular/fire/firestore"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
-              "src/styles-media.scss"
+              "src/styles-media.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -94,6 +102,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
               "src/styles-media.scss"
             ],
@@ -126,6 +135,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "shopping-cart"
 }

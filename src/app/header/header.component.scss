@@ -4,13 +4,21 @@
     left: 0;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 100px;
     width: 100%;
     color:white;
     background: #25274D;
+    z-index: 1000;
 
     .right{
         margin-left: auto;
         margin-right: 37px;
     }
+    .left{
+        margin-left: 37px;
+        margin-right: auto;
+    }
+}
+.header-margin-top{
+    margin-top: 115px;
 }

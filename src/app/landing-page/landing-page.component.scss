@@ -1,9 +1,45 @@
+@import '../../../src/styles-media.scss';
+
 .landing{
-    margin: 0;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    display: flex;
-    height: calc(100% - 60px);
+    margin-top: 115px;
+    overflow-x: hidden;
+    height: 100%;
+    .example-card {
+        max-width: 85%;
+        .mat-card-content{
+            max-height: 100px;
+        }
+        .card-width{
+            width: 25%;
+        }
+    }
+    
+}
+
+
+.medium-bold{
+    font-weight: bolder;
+    font-size: medium;
+}
+.mat-card-actions {
+    // ...
+    &[align='end'] {
+      justify-content: flex-end;
+    }
+  
+    &[align='center'] {
+      justify-content: center;
+    }
+  }
+  
+  @include media("screen","<minWidth"){
+    .landing{
+        .example-card{
+            max-width: 90%;
+            .card-width{
+                width: 100%;
+                padding: 0% 10% 10% 16%;
+            }
+        }  
+    }
 }

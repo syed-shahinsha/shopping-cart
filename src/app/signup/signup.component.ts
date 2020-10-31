@@ -2,37 +2,42 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import { fromEvent } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PasswordValidator } from './password-validator.form';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit,AfterViewInit {
-  email:string='';
-  password:string='';
-  repassword:string='';
+export class SignupComponent implements OnInit {
+  signUpGroup:FormGroup;
   @ViewChild('login') loginButton:ElementRef;
-  constructor(private authenticate:AuthenticationService,private router:Router) { }
+  minCharacters:number = 8;
+  constructor(private authenticate:AuthenticationService,private router:Router,private fb:FormBuilder) { 
+  }
 
   ngOnInit(): void {
+    this.signUpGroup = this.fb.group({
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+      confirmPassword:['',Validators.required,Validators.minLength(8)]
+    }, { validators: PasswordValidator.passwordMatch})
   }
-  ngAfterViewInit(): void {
-    fromEvent(this.loginButton.nativeElement,'click').subscribe((res)=>{
-     this.signUp();
-    })
+  check(){
+    if(!this.signUpGroup.invalid){
+      this.signUp()
+    }
   }
   signUp(){
-    this.authenticate.signUp(this.email,this.password).then(r =>{
+    const {email,password}  = this.signUpGroup.getRawValue();
+    this.authenticate.signUp(email,password).then(r =>{
       this.router.navigate(['verifymail']);
     });
-    this.emptyData();
   }
   loginPage(){
     this.router.navigate(['login'])
   }
-  emptyData():void{
-    this.email= this.password = '';
-  }
+  
 
 }
