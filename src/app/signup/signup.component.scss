@@ -38,10 +38,10 @@
     
 }
 
-// @include media("screen","<minWidth"){
-//     .login-page{
-//         .card-height{
-//             width: 100%;
-//         }
-//     }
-// }
+@include media("screen","<minWidth"){
+    .login-page{
+        .card-height{
+            width:70%;
+        }
+    }
+}
