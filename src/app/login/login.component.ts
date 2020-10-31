@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { fromEvent } from 'rxjs'
+import { fromEvent, timer } from 'rxjs'
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
   email:string='';
   password:string='';
   loginGroup:FormGroup;
@@ -21,20 +21,17 @@ export class LoginComponent implements AfterViewInit {
    }
  
 
-  ngAfterViewInit(): void {
-    fromEvent(this.loginButton.nativeElement,'click').subscribe((res)=>{
-     this.signIn();
-    })
-  }
 
   signIn(){
     const {email,password} = this.loginGroup.getRawValue();
     this.authenticate.signIn(email,password);
-    this.emptyData();
+    // this.emptyData();
   }
 
-  emptyData():void{
-    this.email= this.password = '';
+  check(){
+    if(!this.loginGroup.invalid){
+      this.signIn()
+    }
   }
 
   signUp(){

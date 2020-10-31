@@ -10,7 +10,7 @@ import { PasswordValidator } from './password-validator.form';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit,AfterViewInit {
+export class SignupComponent implements OnInit {
   signUpGroup:FormGroup;
   @ViewChild('login') loginButton:ElementRef;
   minCharacters:number = 8;
@@ -24,10 +24,10 @@ export class SignupComponent implements OnInit,AfterViewInit {
       confirmPassword:['',Validators.required,Validators.minLength(8)]
     }, { validators: PasswordValidator.passwordMatch})
   }
-  ngAfterViewInit(): void {
-    fromEvent(this.loginButton.nativeElement,'click').subscribe((res)=>{
-     this.signUp();
-    })
+  check(){
+    if(!this.signUpGroup.invalid){
+      this.signUp()
+    }
   }
   signUp(){
     const {email,password}  = this.signUpGroup.getRawValue();

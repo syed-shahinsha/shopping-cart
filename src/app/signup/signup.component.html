@@ -28,7 +28,7 @@
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" id="submit" #login [disabled]="signUpGroup?.invalid">Sign Up</button>
+                    <button mat-raised-button color="primary" id="submit" #login [disabled]="signUpGroup?.invalid" (click)="check()">Sign Up</button>
                 </mat-card-actions>
                 </mat-card>
             </div>

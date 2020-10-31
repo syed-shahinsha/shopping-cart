@@ -1,8 +1,8 @@
 
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 export class PasswordValidator{
 
-    static passwordMatch(ac:AbstractControl){
+    static passwordMatch(ac:AbstractControl):ValidationErrors {
         if(ac.get('confirmPassword').touched || ac.get('confirmPassword').dirty){
            const cp = ac.get('confirmPassword').value;
            const p = ac.get('password').value;
