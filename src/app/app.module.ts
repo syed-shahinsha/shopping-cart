@@ -7,7 +7,8 @@ import { FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card'
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -26,10 +27,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     FormsModule,
     BrowserModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
-    AppRoutingModule,
+    MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,

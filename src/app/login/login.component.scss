@@ -2,8 +2,7 @@
 
 .login-page{
     .card-height{
-        height: 100%;
-        width: 50%;
+        width: 30%;
     }
 
     .mat-card{
@@ -16,6 +15,24 @@
         }
         .mat-card-content{
             width: 80%;
+           .mat-form-field{
+            .mat-form-field-appearance-legacy {
+                .mat-form-field-underline {
+                    background-color: #4776f5 !important;
+                    .mat-form-field-ripple {
+                        background-color: #4776f5 !important;;
+                       }
+                  }
+               } 
+              
+              
+             &.mat-focused{
+                .mat-form-field-label {
+                    color: #4776f5 !important;
+                    background-color: #4776f5 !important;
+                   }
+             } 
+           }
         }
         .mat-card-title{
             width: 100%;
@@ -38,10 +55,10 @@
     
 }
 
-@include media("screen","<minWidth"){
-    .login-page{
-        .card-height{
-            width: 100%;
-        }
-    }
-}
+// @include media("screen","<minWidth"){
+//     .login-page{
+//         .card-height{
+//             width: 100%;
+//         }
+//     }
+// }
