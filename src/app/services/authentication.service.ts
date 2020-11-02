@@ -69,6 +69,7 @@ export class AuthenticationService {
         } catch (err) {
             console.log(err);
             window.alert(err.message);
+            return Promise.reject(err);
         }
     }
 

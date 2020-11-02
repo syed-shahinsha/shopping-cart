@@ -10,6 +10,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
@@ -17,12 +20,14 @@ import { SignupComponent } from './signup/signup.component';
 import { LoggedInAuthGuard } from './guard/logged-in.guard';
 import { VerificationMailComponent } from './verification-mail/verification-mail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    VerificationMailComponent
+    VerificationMailComponent,
+    AddProductComponent
   ],
   imports: [
     FormsModule,
@@ -31,6 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

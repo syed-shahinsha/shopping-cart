@@ -21,8 +21,9 @@ export class SignupComponent implements OnInit {
     this.signUpGroup = this.fb.group({
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(8)]],
-      confirmPassword:['',Validators.required,Validators.minLength(8)]
-    }, { validators: PasswordValidator.passwordMatch})
+      confirmPassword:['',[Validators.required,Validators.minLength(8)]],
+    },
+       { validators: PasswordValidator.passwordMatch})
   }
   check(){
     if(!this.signUpGroup.invalid){
@@ -33,6 +34,10 @@ export class SignupComponent implements OnInit {
     const {email,password}  = this.signUpGroup.getRawValue();
     this.authenticate.signUp(email,password).then(r =>{
       this.router.navigate(['verifymail']);
+    }).catch(err => {
+      ["email", "password", "confirmPassword"].forEach(x=>{
+        this.signUpGroup.get(x).patchValue('')
+      })
     });
   }
   loginPage(){

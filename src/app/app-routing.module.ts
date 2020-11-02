@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { LoggedInAuthGuard } from './guard/logged-in.guard';
 import { SignupComponent } from './signup/signup.component';
 import { VerificationMailComponent } from './verification-mail/verification-mail.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     path:'',
     redirectTo:'landingpage',
     pathMatch:'full'
+  },
+  {
+    path:'addProduct',
+    component:AddProductComponent
   }
 ];
 
