@@ -4,26 +4,26 @@
             <div class="align-content-lg-center d-flex flex-column flex-wrap justify-content-around p-2">
                 <mat-card>
                     <mat-card-title><p>Sign Up</p></mat-card-title>
-                    <mat-card-subtitle><p>Hello welcome back! Please enter your credentials to access the Shopping Cart</p></mat-card-subtitle>
+                    <!-- <mat-card-subtitle><p>Hello welcome back! Please enter your credentials to access the Shopping Cart</p></mat-card-subtitle> -->
                     <mat-card-content>
                     <form class="form" [formGroup]="signUpGroup" class="d-flex flex-column">
                         <mat-form-field>
                             <mat-label>Email</mat-label>
-                            <input matInput formControlName="email"  placeholder="Enter your registered Email"/>
-                            <mat-error *ngIf="signUpGroup.get('email').hasError('email') && !signUpGroup.get('email').hasError('required')">Please Enter a Valid Email Address</mat-error>
-                            <mat-error *ngIf="signUpGroup.get('password').hasError('required') ">Email is necessary!</mat-error>
+                            <input matInput formControlName="email"  />
+                            <mat-error *ngIf="signUpGroup.get('email').hasError('email') && !signUpGroup.get('email').hasError('required')">Enter a valid email</mat-error>
+                            <mat-error *ngIf="signUpGroup.get('email').hasError('required') "></mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Password</mat-label>
-                            <input matInput formControlName="password"  placeholder="Enter your secret Password Here" type="password"/>
-                            <mat-error *ngIf="signUpGroup.get('password').hasError('required') ">Password is necessary</mat-error>
-                            <mat-error *ngIf="signUpGroup.get('password').hasError('minlength') && !signUpGroup.get('password').hasError('required') ">Password should be more than 8 characters</mat-error>
+                            <input matInput formControlName="password"   type="password"/>
+                            <mat-error *ngIf="signUpGroup.get('password').hasError('required') "></mat-error>
+                            <mat-error *ngIf="signUpGroup.get('password').hasError('minlength') && !signUpGroup.get('password').hasError('required') ">Minimum 8 characters!</mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Confirm Password</mat-label>
-                            <input matInput formControlName="confirmPassword"  placeholder="Re enter the same password" type="password"/>
-                            <mat-error *ngIf="signUpGroup.get('confirmPassword').hasError('required') ">Password is necessary</mat-error>
-                            <mat-error *ngIf="signUpGroup.get('confirmPassword').hasError('matchError') ">Two Passwords should be the same</mat-error>
+                            <input matInput formControlName="confirmPassword"   type="password" />
+                            <mat-error *ngIf="signUpGroup.get('confirmPassword').hasError('required') "></mat-error>
+                            <mat-error *ngIf="signUpGroup.get('confirmPassword').hasError('matchError') ">Password mismatch!</mat-error>
                         </mat-form-field>
                     </form>
                 </mat-card-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Observable, from, of } from 'rxjs';
 import { map, concatMap, switchMap, toArray } from 'rxjs/operators';
 
@@ -13,7 +14,7 @@ import { map, concatMap, switchMap, toArray } from 'rxjs/operators';
 export class LandingPageComponent implements OnInit {
   prodObs : AngularFirestoreCollection<any>;
   products : Observable<any>;
-  constructor(private afs:AngularFirestore, private san:DomSanitizer, private storage: AngularFireStorage) {
+  constructor(private afs:AngularFirestore, private san:DomSanitizer, private storage: AngularFireStorage, private router: Router) {
     this.prodObs = afs.collection<any>('product');
     this.products = this.prodObs.valueChanges().pipe(
       switchMap( res =>{ 
@@ -34,6 +35,10 @@ export class LandingPageComponent implements OnInit {
       this.products.subscribe(res =>{
        console.log(res);
       })
+  }
+
+  openProductPage(){
+    this.router.navigate(['addProduct']);
   }
 
 }
