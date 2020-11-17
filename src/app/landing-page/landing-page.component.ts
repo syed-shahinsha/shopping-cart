@@ -15,20 +15,16 @@ export class LandingPageComponent implements OnInit {
   prodObs : AngularFirestoreCollection<any>;
   products : Observable<any>;
   constructor(private afs:AngularFirestore, private san:DomSanitizer, private storage: AngularFireStorage, private router: Router) {
-    this.prodObs = afs.collection<any>('product');
-    this.products = this.prodObs.valueChanges().pipe(
-      switchMap( res =>{ 
-        return from(res).pipe( concatMap( x => {
-         return this.safehtml(x.imageURL).pipe( map( img => ({...x,finalImageUrl:img})))
-        }),
-        toArray());
-      })
-    );
+    this.prodObs = afs.collection<any>('sampleProduct');
+    this.products = this.prodObs.valueChanges({idField:'documentId'})
     
    }
   
   safehtml(image){
     return this.storage.ref(image).getDownloadURL();
+  }
+  editProduct(data){
+    this.router.navigate(['addProduct'], { queryParams : { docId: data.documentId}});
   }
 
   ngOnInit(): void {

@@ -17,10 +17,10 @@
     </div>
         <div class="row m-3">
             <div *ngFor="let product of products | async" class="col-md-3" style="margin-top: 5px;" >
-                <mat-card class="example-card mat-elevation-z8 ">
-                    <ng-container *ngIf="product?.finalImageUrl as image">
+                <mat-card class="example-card mat-elevation-z8 " (click)="editProduct(product)">
+                    <ng-container *ngIf="product?.photos[0] as image">
                     <img mat-card-image
-                        [src]="image" style="max-height: 150px;" alt="" />
+                        [src]="image?.downloadURL" style="max-height: 150px;" alt="" />
                     </ng-container>
                     <mat-card-content>
                         <h4>{{product?.name}}</h4>
