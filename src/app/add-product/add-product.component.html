@@ -41,10 +41,23 @@
                               <mat-option value="out-of-stock">Out of Stock</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <input #fileUpload type="file" accept=".jpg,.jpeg,.png" (change)="setToFormValue($event)" multiple hidden/>
+                        <button mat-raised-button color="primary" (click)="fileUpload.click()">Choose Files</button>
+
+                        <div class="imageGroup" >
+                            <div class="img1" *ngFor="let photo of addProductGroup.get('photos').value">
+                                <span class="ml-1">{{photo.name.includes('.') ? photo.name.split('.')[0] : photo.name}}</span>
+                                <span class="ml-1" (click)="deletePhoto(photo.fullPath)"><mat-icon [inline]="true">highlight_off</mat-icon></span>
+                            </div>
+                            <div class="img1" *ngFor="let photo of tempImageArray">
+                                <span class="ml-1">{{photo.name.includes('.') ? photo.name.split('.')[0] : photo.name}}</span>
+                                <span (click)="deletePhotoTemp(photo.fullPath)"><mat-icon [inline]="true">highlight_off</mat-icon></span>
+                            </div>
+                        </div>
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" id="submit" (click)="addProduct()">Add product</button>
+                    <button mat-raised-button color="primary" id="submit" (click)="addProductForTesting()">Add product</button>
                 </mat-card-actions>
                 </mat-card>
             </div>
