@@ -21,6 +21,7 @@ import { LoggedInAuthGuard } from './guard/logged-in.guard';
 import { VerificationMailComponent } from './verification-mail/verification-mail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductComponent } from './add-product/add-product.component';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     MatInputModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatSelectModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
