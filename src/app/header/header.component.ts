@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private auth:AuthenticationService) { }
+  constructor(private auth:AuthenticationService, private afs:AngularFireStorage) { }
 
   ngOnInit(): void {
   } 
