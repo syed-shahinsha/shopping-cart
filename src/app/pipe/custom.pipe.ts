@@ -19,3 +19,15 @@ export class SafePipe implements PipeTransform {
     }
   }
 }
+
+@Pipe({
+  name: 'username'
+})
+export class UsernamePipe implements PipeTransform {
+
+  constructor() { }
+
+  public transform(value: any) {
+    return value.split('@')[0];    
+  }
+}

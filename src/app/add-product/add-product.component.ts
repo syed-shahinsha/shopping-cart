@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ImagePath, DocumentPath } from './add-product';
 
 @Component({
   selector: 'app-add-product',
@@ -11,23 +12,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddProductComponent implements OnInit {
 
-  addProductGroup: FormGroup = this.fb.group({})
-  sampleProductString: string = 'sampleProduct/';
-  sampleProductFile: string = 'sampleProduct/images/';
+  addProductGroup: FormGroup ;
+  
   tempImageArray: any[] = [];
   setUniversalUserId: string = '';
   constructor(private fb: FormBuilder, private route:ActivatedRoute , private storage: AngularFireStorage, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.addProductGroup = this.getGroupData();
     this.route.queryParams.subscribe(res =>{
-      if(res){
+      if(res && res.docId){
         this.setUniversalUserId = res.docId;
-        this.firestore.doc(`${this.sampleProductString}${this.setUniversalUserId}`).get().subscribe(res =>{
+        this.firestore.doc(`${DocumentPath}${this.setUniversalUserId}`).get().subscribe(res =>{
            this.addProductGroup = this.getGroupData(res.data());
         })
       }else{
         this.setUniversalUserId = this.firestore.createId();
-        this.addProductGroup = this.getGroupData();
       }
     })
   }
@@ -88,7 +88,7 @@ export class AddProductComponent implements OnInit {
     let photos: FileList = eve.target.files;
     console.log(photos.length);
     const fileList = Array(photos.length).fill(null).map((_, i) => photos.item(i));
-    const showFiles = fileList.map(x => ({ path: `${this.sampleProductFile}${uid}/${x.name}`, data: x }))
+    const showFiles = fileList.map(x => ({ path: `${ImagePath}${uid}/${x.name}`, data: x }))
     console.log(showFiles);
     const resArray = await Promise.all(showFiles.map(async x => {
       const task = await this.storage.upload(x.path, x.data)
@@ -107,7 +107,7 @@ export class AddProductComponent implements OnInit {
     const uid = this.setUniversalUserId;
     const obj = this.addProductGroup.getRawValue();
     obj.photos = [...obj.photos,...this.tempImageArray];
-    await this.firestore.doc(`${this.sampleProductString}${uid}`).set(obj);
+    await this.firestore.doc(`${DocumentPath}${uid}`).set(obj);
     console.log('Done check now');
   }
 }

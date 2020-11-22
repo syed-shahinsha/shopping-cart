@@ -1,3 +1,4 @@
+@import '../../../src/styles-media.scss';
 
 .imageGroup{
     display:flex;
@@ -16,4 +17,18 @@
 
         
     }
+}
+ 
+.mobile-view{
+    width: 50%;
+    margin: auto;
+}  
+
+@include media("screen","<minWidth"){
+    
+        .mobile-view{
+            width: 100%;
+            margin: 5% 10% 5% 10%;
+        }  
+    
 }

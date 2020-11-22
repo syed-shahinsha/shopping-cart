@@ -9,9 +9,18 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private auth:AuthenticationService, private afs:AngularFireStorage) { }
+  imgsrc: string = '';
+  username: string = 'user!';
 
-  ngOnInit(): void {
+  constructor(private auth:AuthenticationService, private afs:AngularFireStorage) {
+
+   }
+
+  async ngOnInit(): Promise<void> {
+    const logo = await this.afs.ref('logo/sh_logo_with_name_white.svg').getDownloadURL().toPromise();
+    this.imgsrc = logo;
+    this.username = JSON.parse(localStorage.getItem('user'))['email'];
+
   } 
 
   logOut(){
