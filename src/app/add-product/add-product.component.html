@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 d-flex">
-        <div class="w-75 ml-auto mr-auto mb-auto mt-auto">
-            <div class="align-content-lg-center d-flex flex-column flex-wrap justify-content-around p-2">
+        <div class="mobile-view">
+            <div class="d-flex flex-column flex-wrap justify-content-around p-2">
                 <mat-card>
                     <mat-card-title><p>Add Product</p></mat-card-title>
                     <mat-card-content>
@@ -57,7 +57,7 @@
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" id="submit" (click)="addProductForTesting()">Add product</button>
+                    <button mat-raised-button color="primary" id="submit" [disabled]="addProductGroup.invalid" (click)="addProductForTesting()">Add product</button>
                 </mat-card-actions>
                 </mat-card>
             </div>
