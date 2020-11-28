@@ -8,8 +8,8 @@ export interface AddProduct{
     photos:PhotoObjectPartial[] | null;
 }
 
-export const ImagePath = 'sampleProduct/images/';
-export const DocumentPath = 'sampleProduct/';    
+export const ImagePath = 'sarees/';
+export const DocumentPath = 'product/';    
 
 export interface AddProductPartial extends Partial<AddProduct> {}
 

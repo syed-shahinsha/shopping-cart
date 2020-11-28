@@ -75,13 +75,13 @@ export class AddProductComponent implements OnInit {
         samplePhotos.filter( x => x.fullPath !== path).forEach((y)=>{
           this.tempImageArray.push(y)
         })
-      
     })
   }
 
   addProduct() {
     console.log("testing....")
   }
+
   async setToFormValue(eve) {
     //  this.addProductGroup.get('photos').setValue(eve.target.files);
     const uid = this.firestore.createId();
@@ -109,5 +109,6 @@ export class AddProductComponent implements OnInit {
     obj.photos = [...obj.photos,...this.tempImageArray];
     await this.firestore.doc(`${DocumentPath}${uid}`).set(obj);
     console.log('Done check now');
+    this.addProductGroup.reset();
   }
 }
