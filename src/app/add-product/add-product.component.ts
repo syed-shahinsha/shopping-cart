@@ -36,7 +36,7 @@ export class AddProductComponent implements OnInit {
     const form = this.fb.group({
       name: [data ? data.name : '', [Validators.required]],
       category: [data ? data.category : '', [Validators.required]],
-      description: [data ? data.description : '', [Validators.required]],
+      description: [data ? data.description : '', []],
       quantity: [data ? data.quantity : null, [Validators.required]],
       price: [data ? data.price : null, [Validators.required]],
       availability: [data ? data.availability : null, [Validators.required]],
@@ -107,8 +107,15 @@ export class AddProductComponent implements OnInit {
     const uid = this.setUniversalUserId;
     const obj = this.addProductGroup.getRawValue();
     obj.photos = [...obj.photos,...this.tempImageArray];
-    await this.firestore.doc(`${DocumentPath}${uid}`).set(obj);
-    console.log('Done check now');
+    if(this.tempImageArray.length>0 || obj.photos.length > 0){
+      await this.firestore.doc(`${DocumentPath}${uid}`).set(obj);
+      console.log('Added product!');
+    }
+    else{
+
+    }
+    
     this.addProductGroup.reset();
+
   }
 }
