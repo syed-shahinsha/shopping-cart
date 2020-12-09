@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ImagePath, DocumentPath } from './add-product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -16,7 +17,7 @@ export class AddProductComponent implements OnInit {
   
   tempImageArray: any[] = [];
   setUniversalUserId: string = '';
-  constructor(private fb: FormBuilder, private route:ActivatedRoute , private storage: AngularFireStorage, private firestore: AngularFirestore) { }
+  constructor(private fb: FormBuilder, private route:ActivatedRoute , private storage: AngularFireStorage, private firestore: AngularFirestore, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.addProductGroup = this.getGroupData();
@@ -110,12 +111,12 @@ export class AddProductComponent implements OnInit {
     if(this.tempImageArray.length>0 || obj.photos.length > 0){
       await this.firestore.doc(`${DocumentPath}${uid}`).set(obj);
       console.log('Added product!');
+      this.toastr.success('Added product successfully!', 'Success!');
+      this.addProductGroup.reset();
     }
     else{
-
+      this.toastr.warning('Please add an image of the product!', 'Image required!');
     }
-    
-    this.addProductGroup.reset();
 
   }
 }

@@ -20,15 +20,19 @@ import { SignupComponent } from './signup/signup.component';
 import { LoggedInAuthGuard } from './guard/logged-in.guard';
 import { VerificationMailComponent } from './verification-mail/verification-mail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AddProductComponent } from './add-product/add-product.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ProductComponent } from './product/product.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     VerificationMailComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +48,11 @@ import { MatIconModule } from '@angular/material/icon';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     LoggedInAuthGuard
